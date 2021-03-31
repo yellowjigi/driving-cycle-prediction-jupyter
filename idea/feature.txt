@@ -1,0 +1,19 @@
+feature 추가
+평균 가속도
+
+머신러닝 모델의 아웃풋 => step size
+(step 사이즈는 작으면 작을수록 예측 정확도가 향상되어 좋음, 근데 너무 시간이 오래걸림)
+rollback 및 adaptive step size 논문 읽어볼 것!
+
+Dynamic simulation (very slow but the most accurate model)
+=> LSTM 등을 사용하여 v 값으로부터 바로 energy consumption 예측 및 성능 비교
+
+멈춰있다가 출발하는 패턴, 서는 패턴, 크루즈 패턴을 각각 학습.
+사용자의 패턴을 학습!
+그래서 뭐하게? 참조 논문에서처럼 deviation 을 한번 적용해보자.
+그러면 prediction horizon 의 discretization 에 의한 오류가 좀 줄 수 있을 듯.
+
+**<정지구간 예측>?
+
+adjust the model parameters en route (online learning?)
+whenever the vehicle stops, it updates the database and also predict the next segment.

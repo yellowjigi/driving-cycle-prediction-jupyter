@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Driving Cycle &amp; Discrete Driving Cycle</title>
+    </head>
+    
+    <body>
+        
+        <h1>Driving Cycle &amp; Discrete Driving Cycle</h1>
+        <hr/>
+        <div>
+            Simulink blocks representing commonly-used driving cycles.
+        </div> 
+        
+        <h2>Library</h2>
+        <div>
+            <img src="drivingcycleblock_icon.gif" height="100"/>
+        </div>
+        <div>
+            Driving Cycle (Simulink Block) - available from 
+            <a href="https://www.google.com/search?q=Driving+Cycle+Simulink+Block+Daniel+Auger+site%3Amathworks.com"
+               target="_new">MATLAB File Exchange.</a>
+        </div>
+        
+        <h2>Description</h2>
+        <p>
+            These blocks produce driving cycle data, as used in many 
+            automotive applications.  They output displacement, velocity 
+            and acceleration, all in SI units.  The user can choose from a 
+            list of popular cycles.
+        </p>
+        
+        <p>
+            I created these blocks to help my students and researchers get 
+            up and running quickly.  They aren't guaranteed as fit for any 
+            particular purpose, but I hope you find them useful.
+        </p>
+        
+        <p>
+            The internal structure of the continuous time version of the
+            block is illustrated below.  (The discrete time version is 
+            similar.)
+        </p>
+        <p>
+            <img width="680" src="drivingcycleblock_structure.gif"/>
+        </p>
+        
+        
+        <h2>Parameters</h2>
+        <span>
+            <img width="440" src="drivingcycleblock_dialog.gif"/>
+        </span>
+        <dl>
+            <dt>
+                <strong>Cycle name</strong>
+            </dt>
+            <dd>
+                This is a drop-down list of popular cycles such as NEDC and
+                WLTP class 3.
+                <br/>&nbsp;
+            </dd>
+            
+            <dt>
+                <strong>Repeat cycle forver</strong>
+            </dt>
+            <dd>
+                This is a checkbox.  If ticked, the simulation will 
+                continue until its stop time is reached; if not, it will
+                automatically terminate after <strong>two</strong> cycles.
+                <br/>&nbsp;
+            </dd>
+            
+            <dt>
+                <strong>Sample time</strong>
+            </dt>
+            <dd>
+                This is only available on the discrete version of the 
+                block. It is specified in seconds and should work exactly
+                as expected.
+                <br/>&nbsp;
+            </dd>
+        </dl>
+        
+        <h2>Outputs</h2>
+        <dl>
+            <dt>
+                <strong>s (m)</strong>
+            </dt>
+            <dd>
+                Displacement, in SI units.
+                <br/>&nbsp;
+            </dd>
+            
+            <dt>
+                <strong>v (m/s)</strong>
+            </dt>
+            <dd>
+                Velocity, in SI units.
+                <br/>&nbsp;
+            </dd>
+            
+            <dt>
+                <strong>a (m/s^2)</strong>
+            </dt>
+            <dd>
+                Acceleration, in SI units.
+                <br/>&nbsp;
+            </dd>
+            
+        </dl>
+        
+        <h2>Examples</h2>
+        
+        <dl>
+            <dt>
+                <strong><a href="matlab:open_system('sldemo_drivingcycle')">sldemo_drivingcycle.slx</a></strong>
+            </dt>
+            <dd>
+                This model shows how to use the Driving Cycle block.  It
+                also includes a sanity-check on the block's internal
+                calculations.
+                <br/>&nbsp;
+            </dd>
+            
+            <dt>
+                <strong><a href="matlab:open_system('sldemo_discretedrivingcycle')">sldemo_discretedrivingcycle.slx</a></strong>
+            </dt>
+            <dd>
+                This model shows how to use the Discrete Driving Cycle
+                block.  (It is otherwise identical to the one above.)
+                <br/>&nbsp;
+            </dd>
+        </dl>
+        
+        <p>
+            The continuous-time example and its output are shown below.
+        </p>
+        <p>
+            <img width="680" src="drivingcycleblock_demo_1.gif"/>
+        </p>
+        <p>
+            <img width="400" src="drivingcycleblock_demo_2.gif"/>
+        </p>
+        
+        <span>&nbsp;</span>
+        
+        <hr/>
+        
+        <address><a href="https://www.google.com/search?q=Daniel+Auger+MATLAB+Central+site%3Amathworks.com">Daniel J. Auger</address>
+        
+    </body>
+    
+</html>
