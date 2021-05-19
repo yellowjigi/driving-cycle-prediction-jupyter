@@ -1,25 +1,39 @@
 from glob import glob
-import os
+import pathlib
 import sys
 
 import pandas as pd
 
-if sys.argv[1][-1] == '*':
-    csvs = glob(sys.argv[1])
-else:
-    csvs = [sys.argv[1]]
+if len(sys.argv) < 3:
+    py = pathlib.Path(sys.argv[0]).name
+    print('Usage: {0} <CSV> <Destination Directory>'.format(py))
+    exit(0)
 
-for csv in csvs:
-    if '.py' in csv:
+args = sys.argv[1:-1]
+files = []
+for arg in args:
+    files += glob(arg)
+
+files = [pathlib.Path(f) for f in files]
+dst_path = pathlib.PurePath(sys.argv[-1])
+
+for f in files:
+    if not f.exists():
+        print('\'{0}\' does not exist!'.format(f))
         continue
 
-    if os.path.isdir(csv):
+    if f.is_dir():
+        print('\'{0}\' is a directory!'.format(f))
         continue
 
-    df = pd.read_csv(csv)
+    if f.suffix != '.csv':
+        print('\'{0}\' is not a CSV file!'.format(f))
+        continue
 
-    df.drop(['Unnamed: 0'], axis=1, inplace=True)
+    csv = f
+    df = pd.read_csv(csv, index_col=0)
+
     for c in df:
-        df[c] = df[c].map(lambda x: x if x >= 0 else 0.0)
+        df[c] = df[c].map(lambda x: 0.0 if x < 0.25 else x)
 
-    df.to_csv('filtered/' + csv)
+    df.to_csv(dst_path / csv.name)
