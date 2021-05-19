@@ -33,7 +33,8 @@ for f in files:
     csv = f
     df = pd.read_csv(csv, index_col=0)
 
-    for c in df:
-        df[c] = df[c].map(lambda x: 0.0 if x < 0.25 else x)
+    df['prediction'] = df['prediction'].map(lambda x: 0.0 if x < 0.25 else x)
+    # for c in df:
+    #     df[c] = df[c].map(lambda x: 0.0 if x < 0.25 else x)
 
     df.to_csv(dst_path / csv.name)
